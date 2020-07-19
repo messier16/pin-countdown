@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTripCountdown.Android", "MyTripCountdown\MyTripCountdown.Android\MyTripCountdown.Android.csproj", "{FEE0CF89-D950-45D7-96C2-9574B55B5D57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTripCountdown.Android", "MyTripCountdown.Android\MyTripCountdown.Android.csproj", "{FEE0CF89-D950-45D7-96C2-9574B55B5D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTripCountdown.iOS", "MyTripCountdown\MyTripCountdown.iOS\MyTripCountdown.iOS.csproj", "{BE5DC283-A468-4A4D-AC75-7EACC3CE14D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTripCountdown.iOS", "MyTripCountdown.iOS\MyTripCountdown.iOS.csproj", "{BE5DC283-A468-4A4D-AC75-7EACC3CE14D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTripCountdown", "MyTripCountdown\MyTripCountdown\MyTripCountdown.csproj", "{DF6F3B94-4D9A-4A6E-BBD9-A1B5CC3DCB61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTripCountdown", "MyTripCountdown\MyTripCountdown.csproj", "{DF6F3B94-4D9A-4A6E-BBD9-A1B5CC3DCB61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

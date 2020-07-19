@@ -91,16 +91,16 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <BundleResource Include="..\..\Resources\Source Sans Pro\sourcesanspro-bold.ttf">
+    <BundleResource Include="..\Resources\Source Sans Pro\sourcesanspro-bold.ttf">
       <Link>Resources\sourcesanspro-bold.ttf</Link>
     </BundleResource>
-    <BundleResource Include="..\..\Resources\Source Sans Pro\sourcesanspro-light.ttf">
+    <BundleResource Include="..\Resources\Source Sans Pro\sourcesanspro-light.ttf">
       <Link>Resources\sourcesanspro-light.ttf</Link>
     </BundleResource>
-    <BundleResource Include="..\..\Resources\Source Sans Pro\sourcesanspro-regular.ttf">
+    <BundleResource Include="..\Resources\Source Sans Pro\sourcesanspro-regular.ttf">
       <Link>Resources\sourcesanspro-regular.ttf</Link>
     </BundleResource>
-    <BundleResource Include="..\..\Resources\Source Sans Pro\sourcesanspro-semibold.ttf">
+    <BundleResource Include="..\Resources\Source Sans Pro\sourcesanspro-semibold.ttf">
       <Link>Resources\sourcesanspro-semibold.ttf</Link>
     </BundleResource>
     <None Include="Entitlements.plist" />
@@ -160,26 +160,26 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SkiaSharp">
-      <Version>1.60.2</Version>
+      <Version>2.80.1</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
-      <Version>1.60.2</Version>
+      <Version>2.80.1</Version>
     </PackageReference>
     <PackageReference Include="Skor.Controls">
       <Version>0.0.2-alpha1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
-      <Version>2.4.3.840</Version>
+      <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Transformations">
-      <Version>2.4.3.840</Version>
+      <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1142" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MyTripCountdown\MyTripCountdown.csproj">
-      <Project>{3057D3A0-5DE4-4B4F-B029-95344327B593}</Project>
+      <Project>{DF6F3B94-4D9A-4A6E-BBD9-A1B5CC3DCB61}</Project>
       <Name>MyTripCountdown</Name>
     </ProjectReference>
   </ItemGroup>

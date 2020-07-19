@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -49,21 +48,21 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SkiaSharp">
-      <Version>1.60.2</Version>
+      <Version>2.80.1</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
-      <Version>1.60.2</Version>
+      <Version>2.80.1</Version>
     </PackageReference>
     <PackageReference Include="Skor.Controls">
       <Version>0.0.2-alpha1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
-      <Version>2.4.3.840</Version>
+      <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Transformations">
-      <Version>2.4.3.840</Version>
+      <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1142" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2" />
@@ -76,16 +75,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="..\..\Resources\Source Sans Pro\sourcesanspro-bold.ttf">
+    <AndroidAsset Include="..\Resources\Source Sans Pro\sourcesanspro-bold.ttf">
       <Link>Assets\sourcesanspro-bold.ttf</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\..\Resources\Source Sans Pro\sourcesanspro-light.ttf">
+    <AndroidAsset Include="..\Resources\Source Sans Pro\sourcesanspro-light.ttf">
       <Link>Assets\sourcesanspro-light.ttf</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\..\Resources\Source Sans Pro\sourcesanspro-regular.ttf">
+    <AndroidAsset Include="..\Resources\Source Sans Pro\sourcesanspro-regular.ttf">
       <Link>Assets\sourcesanspro-regular.ttf</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\..\Resources\Source Sans Pro\sourcesanspro-semibold.ttf">
+    <AndroidAsset Include="..\Resources\Source Sans Pro\sourcesanspro-semibold.ttf">
       <Link>Assets\sourcesanspro-semibold.ttf</Link>
     </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
@@ -118,7 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyTripCountdown\MyTripCountdown.csproj">
-      <Project>{3057D3A0-5DE4-4B4F-B029-95344327B593}</Project>
+      <Project>{DF6F3B94-4D9A-4A6E-BBD9-A1B5CC3DCB61}</Project>
       <Name>MyTripCountdown</Name>
     </ProjectReference>
   </ItemGroup>
