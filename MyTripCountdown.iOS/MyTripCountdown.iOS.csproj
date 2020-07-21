@@ -106,51 +106,42 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\edit_dark%403x.png" />
+    <BundleResource Include="Resources\edit_dark%402x.png" />
+    <BundleResource Include="Resources\edit_dark.png" />
+    <BundleResource Include="Resources\edit_clear%403x.png" />
+    <BundleResource Include="Resources\edit_clear%402x.png" />
+    <BundleResource Include="Resources\edit_clear.png" />
+    <BundleResource Include="Resources\save_dark%403x.png" />
+    <BundleResource Include="Resources\save_dark%402x.png" />
+    <BundleResource Include="Resources\save_dark.png" />
+    <BundleResource Include="Resources\save_clear.png" />
+    <BundleResource Include="Resources\save_clear%402x.png" />
+    <BundleResource Include="Resources\save_clear%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon-iTunesArtwork.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4040x40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4060x60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4058x58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4087x87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4080x80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%40120x120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%40120x120-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%40180x180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4020x20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4040x40-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4029x29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4058x58-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4040x40-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4080x80-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%4076x76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%40152x152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app-icon%40167x167.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

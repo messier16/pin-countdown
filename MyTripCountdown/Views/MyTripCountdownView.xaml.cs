@@ -1,4 +1,5 @@
-﻿using MyTripCountdown.ViewModels;
+﻿using FFImageLoading.Forms;
+using MyTripCountdown.ViewModels;
 using MyTripCountdown.ViewModels.Base;
 using Xamarin.Forms;
 
@@ -10,7 +11,7 @@ namespace MyTripCountdown.Views
 		{
 			InitializeComponent ();
 
-            BindingContext = new MyTripCountdownViewModel();
+            BindingContext = App.vieModel;
 		}
 
         protected override async void OnAppearing()
@@ -25,6 +26,20 @@ namespace MyTripCountdown.Views
             base.OnDisappearing();
             var vm = BindingContext as BaseViewModel;
             await vm?.UnloadAsync();
+        }
+
+        async void ImageButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var vm = BindingContext as MyTripCountdownViewModel;
+            var editVm = new EditCountdownViewModel
+            {
+                ImageBytes = vm.ImageBytes,
+                Name = vm.Name,
+                CreationDate = vm.Creation,
+                EndDate = vm.Date
+
+            };
+            await Navigation.PushAsync(new EditCountdownPage(editVm));
         }
     }
 }

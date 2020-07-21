@@ -1,7 +1,12 @@
-﻿using MyTripCountdown.Models;
+﻿using Akavache;
+using MyTripCountdown.Models;
 using MyTripCountdown.ViewModels.Base;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Reactive.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -10,9 +15,13 @@ namespace MyTripCountdown.ViewModels
 {
     public class MyTripCountdownViewModel : BaseViewModel
     {
-        private Trip _trip;
+        private DateTime _date;
+        private DateTime _creation;
         private Countdown _countdown;
         private int _days;
+        private string _name;
+        private ImageSource _image;
+        private byte[] _imageBytes;
         private int _hours;
         private int _minutes;
         private double _progress;
@@ -22,10 +31,39 @@ namespace MyTripCountdown.ViewModels
             _countdown = new Countdown();
         }
 
-        public Trip MyTrip
+
+        public DateTime Date
         {
-            get => _trip;
-            set => SetProperty(ref _trip, value);
+            get => _date;
+            set => SetProperty(ref _date, value);
+        }
+
+        public DateTime Creation
+        {
+            get => _creation;
+            set => SetProperty(ref _creation, value);
+        }
+
+        public string Name
+        {
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
+
+        public byte[] ImageBytes
+        {
+            get { return _imageBytes; }
+            set {
+                SetProperty(ref _imageBytes, value);
+                var stream = new MemoryStream(value);
+                this.Image = ImageSource.FromStream(() => stream);
+            }
+        }
+
+        public ImageSource Image
+        {
+            get => _image;
+            set => SetProperty(ref _image, value);
         }
 
         public int Days
@@ -54,17 +92,51 @@ namespace MyTripCountdown.ViewModels
 
         public ICommand RestartCommand => new Command(Restart);
 
-        public override Task LoadAsync()
+        public override async Task LoadAsync()
         {
-            LoadTrip();
+            CountdownDate countdownDate;
+            try
+            {
+                countdownDate = await BlobCache.UserAccount.GetObject<CountdownDate>(Keys.CountdownDate);
 
-            _countdown.EndDate = MyTrip.Date;
+            }
+            catch (KeyNotFoundException)
+            {
+                countdownDate = new CountdownDate
+                {
+                    Name = "Future event",
+                    CreationDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddDays(7)
+                };
+            }
+
+
+            this.Date = countdownDate.EndDate;
+            this.Creation = countdownDate.CreationDate;
+            this.Name = countdownDate.Name;
+            
+            try
+            {
+                this.ImageBytes = await BlobCache.UserAccount.Get(Keys.Image);
+            }
+            catch (KeyNotFoundException)
+            {
+                var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                using (Stream resFilestream = assembly.GetManifestResourceStream("MyTripCountdown.sunset.jpg"))
+                {
+                    byte[] ba = new byte[resFilestream.Length];
+                    resFilestream.Read(ba, 0, ba.Length);
+                    this.ImageBytes = ba;
+                }
+            }
+
+            _countdown.EndDate = Date;
             _countdown.Start();
 
             _countdown.Ticked += OnCountdownTicked;
             _countdown.Completed += OnCountdownCompleted;
 
-            return base.LoadAsync();
+            await base.LoadAsync();
         }
 
         public override Task UnloadAsync()
@@ -81,7 +153,7 @@ namespace MyTripCountdown.ViewModels
             Hours = _countdown.RemainTime.Hours;
             Minutes = _countdown.RemainTime.Minutes;
 
-            var totalSeconds = (MyTrip.Date - MyTrip.Creation).TotalSeconds;
+            var totalSeconds = (Date - Creation).TotalSeconds;
             var remainSeconds = _countdown.RemainTime.TotalSeconds;
             Progress = remainSeconds / totalSeconds;
         }
@@ -95,17 +167,6 @@ namespace MyTripCountdown.ViewModels
             Progress = 0;
         }
 
-        void LoadTrip()
-        {
-            var trip = new Trip()
-            {
-                Picture = "trip",
-                Date = DateTime.Now + new TimeSpan(1, 2, 42, 15),
-                Creation = DateTime.Now.AddHours(-8)
-            };
-
-            MyTrip = trip;
-        }
 
         void Restart()
         {

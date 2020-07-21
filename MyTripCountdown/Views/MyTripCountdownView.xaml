@@ -8,8 +8,17 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:skor="clr-namespace:Skor.Controls;assembly=Skor.Controls"  
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    BackgroundColor="{StaticResource WhiteColor}" 
-    ios:Page.UseSafeArea="true">
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vms="clr-namespace:MyTripCountdown.ViewModels"
+    mc:Ignorable="d"
+    BackgroundColor="{StaticResource WhiteColor}"
+    NavigationPage.HasNavigationBar="False"
+    ios:Page.UseSafeArea="True">
+    <d:ContentPage.BindingContext>
+        <vms:MyTripCountdownViewModel
+            Name="Test title" Image="trip"></vms:MyTripCountdownViewModel>
+    </d:ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -43,32 +52,34 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Text="My Trip Countdown"
+                VerticalOptions="EndAndExpand"
+                Text="{Binding Name}"
                 Style="{StaticResource TripTitleStyle}"/>
+            <ImageButton
+                Source="edit_clear"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                BackgroundColor="Transparent"
+                Margin="5"
+                Clicked="ImageButton_Clicked"></ImageButton>
             <Grid
                 Grid.Row="1">
-                <ffimageloading:CachedImage  
+                <ffimageloading:CachedImage 
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand" 
                     Aspect="AspectFit"
-                    Source="{Binding MyTrip.Picture}"
-                    Margin="12">
+                    Source="{Binding Image}"
+                    Margin="10">
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation />
                     </ffimageloading:CachedImage.Transformations>
                 </ffimageloading:CachedImage>
-                <controls:CircleCountdown 
-                    VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"
-                    Progress="{Binding Progress}"
-                    ProgressStartColor="{StaticResource ProgressPinkColor}"
-                    ProgressEndColor="{StaticResource ProgressBlueColor}"
-                    StrokeWidth="10"/>
             </Grid>
             <Grid
                 Grid.Row="2"
@@ -126,27 +137,6 @@
                     Text="minutes"  
                     Style="{StaticResource SmallCountdownStyle}"/>
             </Grid>
-            <StackLayout 
-                Grid.Row="3"
-                Margin="0, 0, 0, 48">
-                <Grid
-                    Margin="84, 12">
-                    <skor:GradientButton  
-                        HeightRequest="60"      
-                        CornerRadius="96"
-                        StartColor="{StaticResource ProgressPinkColor}"
-                        EndColor="{StaticResource ProgressBlueColor}"
-                        Command="{Binding RestartCommand}"/>
-                    <Label       
-                        Text="RESTART"  
-                        FontFamily="{StaticResource SourceSansRegular}"
-                        FontSize="{StaticResource FontSize24}" 
-                        TextColor="{StaticResource WhiteColor}"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        InputTransparent="True"/>
-                </Grid>
-            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
