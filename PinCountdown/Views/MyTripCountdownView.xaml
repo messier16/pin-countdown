@@ -12,7 +12,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vms="clr-namespace:PinCountdown.ViewModels"
     mc:Ignorable="d"
-    BackgroundColor="{StaticResource WhiteColor}"
+    BackgroundColor="{AppThemeBinding Dark={StaticResource BlackColor}, Light={StaticResource WhiteColor}}"
     NavigationPage.HasNavigationBar="False"
     ios:Page.UseSafeArea="True">
     <d:ContentPage.BindingContext>
@@ -25,7 +25,7 @@
             <Style x:Key="TripTitleStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SourceSansSemiBold}" />
                 <Setter Property="FontSize" Value="{StaticResource FontSize40}" />
-                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource BlackColor}, Dark={StaticResource WhiteColor}}" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -36,7 +36,7 @@
             <Style x:Key="BigCountdownStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SourceSansRegular}" />
                 <Setter Property="FontSize" Value="{StaticResource FontSize44}" />
-                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource BlackColor}, Dark={StaticResource WhiteColor}}" />
                 <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
 
@@ -62,7 +62,7 @@
                 Text="{Binding Name}"
                 Style="{StaticResource TripTitleStyle}"/>
             <ImageButton
-                Source="edit_clear"
+                Source="{AppThemeBinding Light=edit_clear, Dark=edit_dark}"
                 VerticalOptions="Start"
                 HorizontalOptions="End"
                 BackgroundColor="Transparent"

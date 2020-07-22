@@ -18,6 +18,7 @@ namespace PinCountdown.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            global::Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             global::Xamarin.Forms.Forms.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             Skor.Controls.iOS.Controls.Init();

@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>PinCountdown</string>
+	<string>Pin Countdown</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.PinCountdown</string>
+	<string>com.messier16.pincountdown</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>

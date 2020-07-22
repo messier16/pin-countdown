@@ -13,7 +13,8 @@ namespace PinCountdown.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
+             
+            global::Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.Essentials.Platform.Init(this, bundle);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(false);

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="PinCountdown.Views.CustomNavigationPage"  
     xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    BarBackgroundColor="{StaticResource WhiteColor}"
-    BarTextColor="{StaticResource BlackColor}"
+    BarBackgroundColor="{AppThemeBinding Dark={StaticResource BlackColor}, Light={StaticResource WhiteColor}}"
+    BarTextColor="{AppThemeBinding Light={StaticResource BlackColor}, Dark={StaticResource WhiteColor}}"
     iOS:NavigationPage.IsNavigationBarTranslucent="True">
 </NavigationPage>
