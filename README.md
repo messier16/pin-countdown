@@ -1,5 +1,7 @@
 # My Trip Countdown
 
+Originally forked from [https://github.com/jsuarezruiz/MyTripCountdown](https://github.com/jsuarezruiz/MyTripCountdown)  
+
 My Trip Countdown is a Xamarin.Forms sample to show how to create **goodlooking UI** with Xamarin.Forms. This sample is based on [Countdown timer](https://dribbble.com/shots/3580838-Daily-UI-014-Countdown-timer/) designed by [Victoria Sgarro](https://dribbble.com/victoriasgarro).
 
 ![](images/countdown_timer.png)
@@ -29,7 +31,7 @@ My Trip Countdown app is available for two platforms:
 
 ## Screens
 
-<img src="images/MyTripCountdown.png" alt="My Trip Countdown" Width="320" />
+<img src="images/PinCountdown.png" alt="My Trip Countdown" Width="320" />
 
 
 ## Requirements
