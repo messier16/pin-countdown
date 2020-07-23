@@ -30,16 +30,23 @@ namespace PinCountdown.Views
 
         async void ImageButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            var vm = BindingContext as PinCountdownViewModel;
-            var editVm = new EditCountdownViewModel
+            if(sender == EditButton)
             {
-                ImageBytes = vm.ImageBytes,
-                Name = vm.Name,
-                CreationDate = vm.Creation,
-                EndDate = vm.Date
+                var vm = BindingContext as PinCountdownViewModel;
+                var editVm = new EditCountdownViewModel
+                {
+                    ImageBytes = vm.ImageBytes,
+                    Name = vm.Name,
+                    CreationDate = vm.Creation,
+                    EndDate = vm.Date
 
-            };
-            await Navigation.PushAsync(new EditCountdownPage(editVm));
+                };
+                await Navigation.PushAsync(new EditCountdownPage(editVm));
+            }
+            else
+            {
+                await Navigation.PushAsync(new AboutPage());
+            }
         }
     }
 }

@@ -67,6 +67,15 @@
                 HorizontalOptions="End"
                 BackgroundColor="Transparent"
                 Margin="5"
+                x:Name="EditButton"
+                Clicked="ImageButton_Clicked"></ImageButton>
+            <ImageButton
+                Source="{AppThemeBinding Light=about_clear, Dark=about_dark}"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                BackgroundColor="Transparent"
+                Margin="5"
+                x:Name="AboutButton"
                 Clicked="ImageButton_Clicked"></ImageButton>
             <Grid
                 Grid.Row="1">

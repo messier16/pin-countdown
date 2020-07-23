@@ -120,6 +120,12 @@
     <BundleResource Include="Resources\save_clear.png" />
     <BundleResource Include="Resources\save_clear%402x.png" />
     <BundleResource Include="Resources\save_clear%403x.png" />
+    <BundleResource Include="Resources\about_dark%403x.png" />
+    <BundleResource Include="Resources\about_dark%402x.png" />
+    <BundleResource Include="Resources\about_dark.png" />
+    <BundleResource Include="Resources\about_clear%403x.png" />
+    <BundleResource Include="Resources\about_clear%402x.png" />
+    <BundleResource Include="Resources\about_clear.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
