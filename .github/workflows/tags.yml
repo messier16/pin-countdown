@@ -1,0 +1,33 @@
+name: Build the app
+
+on: push
+
+jobs:
+
+  build:
+    
+    runs-on: macOS-latest
+
+    steps:
+
+      - uses: actions/checkout@v1
+
+      - name: Decrypt Secrets
+        run: ./secrets/decrypt_secrets.sh
+        env:
+          DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
+
+      - name: iOS Build
+        run: |
+          nuget restore
+          msbuild \
+            /p:Configuration=Release \
+            /p:Platform=iPhone \
+            /p:BuildIpa=true \
+            /target:Build \
+            PinCountdown.iOS/PinCountdown.iOS.csproj
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: PinCountdown.iOS.ipa
+          path: PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa
