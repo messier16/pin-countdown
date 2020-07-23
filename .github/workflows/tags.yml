@@ -31,3 +31,9 @@ jobs:
         with:
           name: PinCountdown.iOS.ipa
           path: PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa
+
+      - name: Publish to AppStore
+        run: |
+          xcrun altool --upload-app -t ios \
+            -f PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa \
+            -u "${{ secrets.APPLEID_USERNAME }}" -p "${{ secrets.APPLEID_PASSWORD }}"
