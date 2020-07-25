@@ -1,0 +1,69 @@
+name: Build the app
+
+on: push
+
+jobs:
+
+  build:
+    
+    runs-on: macOS-latest
+
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v1
+
+      - name: Decrypt Secrets
+        run: ./secrets/decrypt_secrets.sh
+        env:
+          DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
+
+      - name: iOS Build
+        run: |
+          nuget restore
+          msbuild \
+            /p:Configuration=Release \
+            /p:Platform=iPhone \
+            /p:BuildIpa=true \
+            /target:Build \
+            PinCountdown.iOS/PinCountdown.iOS.csproj
+
+      - name: Android Build
+        run: |
+          nuget restore
+          msbuild \
+            /p:Configuration=Release \
+            /p:Platform=AnyCPU \
+            /target:SignAndroidPackage \
+            /p:AndroidSigningKeyAlias="PinCountdown" \
+            /p:AndroidSigningKeyPass='${{ secrets.KEYSTORE_PASS }}' \
+            /p:AndroidSigningStorePass='${{ secrets.KEYSTORE_PASS }}' \
+            /p:AndroidKeyStore="true" \
+            /p:AndroidSigningKeyStore="$PWD/secrets/PinCountdown.keystore" \
+            PinCountdown.Android/PinCountdown.Android.csproj
+
+      - name: Save generated IPA
+        uses: actions/upload-artifact@v2
+        with:
+          name: PinCountdown.iOS.ipa
+          path: PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa
+
+      - name: Save generated APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: PinCountdown.Android.apk
+          path: PinCountdown.Android/bin/Release/com.messier16.pincountdown-Signed.apk
+
+      - name: Publish to App Store
+        run: |
+          xcrun altool --upload-app -t ios \
+            -f PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa \
+            -u "${{ secrets.APPLEID_USERNAME }}" -p "${{ secrets.APPLEID_PASSWORD }}"
+
+      - name: Publish to Play Store
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: com.messier16.pincountdown
+          releaseFile: PinCountdown.Android/bin/Release/com.messier16.pincountdown-Signed.apk
+          track: alpha
