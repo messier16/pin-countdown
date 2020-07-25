@@ -10,7 +10,8 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v1
+      - name: Checkout repo
+        uses: actions/checkout@v1
 
       - name: Decrypt Secrets
         run: ./secrets/decrypt_secrets.sh
@@ -27,13 +28,34 @@ jobs:
             /target:Build \
             PinCountdown.iOS/PinCountdown.iOS.csproj
 
-      - uses: actions/upload-artifact@v2
+      - name: Android Build
+        run: |
+          nuget restore
+          msbuild \
+            /p:Configuration=Release \
+            /p:Platform=AnyCPU \
+            /target:SignAndroidPackage \
+            /p:AndroidSigningKeyAlias="PinCountdown" \
+            /p:AndroidSigningKeyPass='${{ secrets.KEYSTORE_PASS }}' \
+            /p:AndroidSigningStorePass='${{ secrets.KEYSTORE_PASS }}' \
+            /p:AndroidKeyStore="true" \
+            /p:AndroidSigningKeyStore="$PWD/secrets/PinCountdown.keystore" \
+            PinCountdown.Android/PinCountdown.Android.csproj
+
+      - name: Save generated IPA
+        uses: actions/upload-artifact@v2
         with:
           name: PinCountdown.iOS.ipa
           path: PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa
 
-      - name: Publish to AppStore
-        run: |
-          xcrun altool --upload-app -t ios \
-            -f PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa \
-            -u "${{ secrets.APPLEID_USERNAME }}" -p "${{ secrets.APPLEID_PASSWORD }}"
+      - name: Save generated APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: PinCountdown.Android.apk
+          path: PinCountdown.Android/bin/Release/com.messier16.pincountdown-Signed.apk
+
+      # - name: Publish to AppStore
+      #   run: |
+      #     xcrun altool --upload-app -t ios \
+      #       -f PinCountdown.iOS/bin/iPhone/Release/PinCountdown.iOS.ipa \
+      #       -u "${{ secrets.APPLEID_USERNAME }}" -p "${{ secrets.APPLEID_PASSWORD }}"
