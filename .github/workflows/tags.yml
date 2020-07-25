@@ -1,11 +1,13 @@
 name: Build the app
 
-on: push
+
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
-
   build:
-    
     runs-on: macOS-latest
 
     steps:
