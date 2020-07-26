@@ -7,6 +7,7 @@ namespace PinCountdown.Views
 {
     public partial class PinCountdownView : ContentPage
 	{
+        bool _isVisible = true;
 		public PinCountdownView ()
 		{
 			InitializeComponent ();
@@ -47,6 +48,13 @@ namespace PinCountdown.Views
             {
                 await Navigation.PushAsync(new AboutPage());
             }
+        }
+
+        async void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            _isVisible = !_isVisible;
+            EditButton.IsVisible = _isVisible;
+            AboutButton.IsVisible = _isVisible;
         }
     }
 }

@@ -51,6 +51,9 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+            </Grid.GestureRecognizers>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
