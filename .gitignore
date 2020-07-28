@@ -419,3 +419,6 @@ MigrationBackup/
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,xamarinstudio,macos,windows
 
 *.designer.cs
+
+# Ignore python .venv
+.venv
