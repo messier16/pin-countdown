@@ -9,7 +9,7 @@
     Title="Edit countdown"
     mc:Ignorable="d">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" IconImageSource="save_clear" Command="{Binding Save}"></ToolbarItem>
+        <ToolbarItem Text="Save" Command="{Binding Save}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <d:ContentPage.BindingContext>
         <vms:PinCountdownViewModel

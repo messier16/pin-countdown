@@ -8,7 +8,10 @@ namespace PinCountdown.Views
     public partial class PinCountdownView : ContentPage
 	{
         bool _isVisible = true;
-		public PinCountdownView ()
+        private double width;
+        private double height;
+
+        public PinCountdownView ()
 		{
 			InitializeComponent ();
 
@@ -29,25 +32,44 @@ namespace PinCountdown.Views
             await vm?.UnloadAsync();
         }
 
-        async void ImageButton_Clicked(System.Object sender, System.EventArgs e)
+        protected override void OnSizeAllocated(double width, double height)
         {
-            if(sender == EditButton)
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
             {
-                var vm = BindingContext as PinCountdownViewModel;
-                var editVm = new EditCountdownViewModel
+                this.width = width;
+                this.height = height;
+                if (width > height)
                 {
-                    ImageBytes = vm.ImageBytes,
-                    Name = vm.Name,
-                    CreationDate = vm.Creation,
-                    EndDate = vm.Date
+                    this.HorizontalView.IsVisible = true;
+                    this.VerticalView.IsVisible = false;
+                }
+                else
+                {
+                    this.HorizontalView.IsVisible = false;
+                    this.VerticalView.IsVisible = true;
+                }
+            }
+        }
 
-                };
-                await Navigation.PushAsync(new EditCountdownPage(editVm));
-            }
-            else
+        async void EditButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+
+            var vm = BindingContext as PinCountdownViewModel;
+            var editVm = new EditCountdownViewModel
             {
+                ImageBytes = vm.ImageBytes,
+                Name = vm.Name,
+                CreationDate = vm.Creation,
+                EndDate = vm.Date
+
+            };
+            await Navigation.PushAsync(new EditCountdownPage(editVm));
+        }
+
+        async void AboutButton_Clicked(System.Object sender, System.EventArgs e)
+        {
                 await Navigation.PushAsync(new AboutPage());
-            }
         }
 
         async void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
